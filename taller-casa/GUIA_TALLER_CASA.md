@@ -1,4 +1,4 @@
-# Taller Autónomo (Para Casa): «Auditoría Forense y Modernización con CI/CD Quality Gates»
+# Taller:Auditoría Forense y Modernización con CI/CD Quality Gates
 
 ---
 
@@ -7,7 +7,7 @@
 
 ---
 
-##  Escenario Empresarial Ficticio
+##  Escenario Empresarial
 La fintech **«FastPay Global»** procesa suscripciones y cobros recurrentes a través de un microservicio en Node.js. En los últimos tres meses, el servicio ha sufrido caídas los fines de semana, quejas de clientes por cobros duplicados y una rotación de desarrolladores del 60%. La dirección de tecnología ha congelado nuevos despliegues hasta que se presente una auditoría formal y se refactorice el sistema bajo estándares **ISO/IEC 25010** e **ISO/IEC/IEEE 12207**.
 
 Tu equipo ha sido contratado como Consultores de Arquitectura de Software para sanear el servicio y blindar el pipeline de despliegue.
@@ -16,7 +16,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ##  Fases del Taller
 
-###  Fase 1: Diagnóstico Forense y Medición Cuantitativa (30% de la nota)
+###  Fase 1: Diagnóstico Forense y Medición Cuantitativa
 1. **Análisis Estático de Código:**
    * Configurar **ESLint** con reglas estrictas (o el plugin `eslint-plugin-sonarjs`).
    * Ejecutar análisis de dependencias vulnerables con `npm audit`.
@@ -30,7 +30,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ---
 
-###  Fase 2: Modernización y Refactorización Arquitectónica (40% de la nota)
+###  Fase 2: Modernización y Refactorización Arquitectónica
 1. **Adopción de Arquitectura Hexagonal (Puertos y Adaptadores):**
    * Reorganizar la estructura de carpetas:
      ```text
@@ -48,7 +48,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ---
 
-###  Fase 3: Quality Gates Automatizados en GitHub Actions (30% de la nota)
+###  Fase 3: Quality Gates Automatizados en GitHub Actions
 1. Configurar un flujo de trabajo CI en `.github/workflows/quality-gate.yml`.
 2. El pipeline debe activarse en cada `push` y `pull_request` a la rama `main`:
    * **Paso 1:** Verificación de sintaxis y linter (`npm run lint`).
