@@ -1,0 +1,20 @@
+{
+  "name": "el-monolito-toxico",
+  "version": "0.1.0-unstable",
+  "description": "Taller en clase: Simulación de relevo técnico, fricción de git y saneamiento de deuda técnica",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "simulate": "node scripts/simulate.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "deuda-tecnica",
+    "refactoring",
+    "iso-25010"
+  ],
+  "author": "Especialización en Ingeniería de Software",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}

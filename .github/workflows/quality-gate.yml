@@ -1,0 +1,40 @@
+name: Quality Gate CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-gate:
+    name: Inspección de Calidad y Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar Código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: 1. Inspección Estática (Linter)
+        run: npm run lint --if-present
+
+      - name: 2. Auditoría de Seguridad de Dependencias
+        run: npm audit --audit-level=high
+
+      - name: 3. Ejecución de Pruebas Unitarias
+        run: npm test
+
+      - name: 4. Verificación de Quality Gate
+        run: |
+          echo "======================================"
+          echo "✅ Todos los Quality Gates superados!"
+          echo "======================================"

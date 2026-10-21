@@ -1,0 +1,118 @@
+Deuda Técnica
+Síntomas visibles, causas organizacionales y estrategias de remediación continua.
+Esp. Ingeniería de Software
+
+IMPACTO ECONÓMICO
+El Costo de los Atajos
+42%
+Tiempo de desarrollo consumido en pagar intereses técnicos
+Cada decisión apresurada reduce la capacidad futura del equipo.
+
+CLASIFICACIÓN ESTRATÉGICA
+El Cuadrante de Martin Fowler
+DELIBERADA • PRUDENTE: Deuda Táctica. «Debemos salir a producción ya; conocemos las concesiones y las pagaremos en el sprint siguiente.» Decisión consciente de negocio.
+DELIBERADA • TEMERARIA: Deuda Negligente. «No hay tiempo para diseño ni testing, solo lancen código.» Genera bancarrota técnica acelerada y colapso operacional.
+INADVERTIDA • PRUDENTE: Deuda por Aprendizaje. «Ahora que entendemos mejor el dominio, rediseñaríamos el módulo.» Consecuencia natural de la evolución y maduración del producto.
+INADVERTIDA • TEMERARIA: Deuda por Incompetencia. «¿Qué son patrones SOLID o modularidad?» Desconocimiento técnico que genera software imposible de mantener o testear.
+
+DIAGNÓSTICO
+Síntomas Críticos en el Sistema
+Modificaciones Frágiles
+Múltiples incidencias ante cambios mínimos.
+Rendimiento Degradado
+Software lento y recursos agotados.
+Código Intocable
+Módulos temidos por todo el equipo.
+
+DIAGNÓSTICO
+Síntomas en el Equipo y Operación
+Dependencias Obsoletas
+Librerías desactualizadas e imposibles de migrar.
+Dificultad de Reclutamiento
+Curva de entrada excesiva para desarrolladores nuevos.
+Entregas a Ciegas
+Despliegues continuos sin validación formal de calidad.
+
+ESTÁNDARES INTERNACIONALES
+Marcos ISO/IEC/IEEE para Mitigar Deuda
+ISO/IEC/IEEE 12207
+Ciclo de Vida Software
+Gobernanza de procesos técnicos, transición formal y mantenimiento evolutivo disciplinado.
+ISO/IEC/IEEE 16326
+Gestión de Proyectos
+Planificación de contingencias, cálculo de riesgos e impacto de plazos forzados.
+ISO/IEC/IEEE 29148
+Ingeniería de Requisitos
+Prevención de ambigüedad, control de alcance y trazabilidad de requerimientos.
+ISO/IEC 25010
+Modelo de Calidad
+Evaluación cuantitativa de mantenibilidad, modularidad y reusabilidad.
+
+ORIGEN DEL PROBLEMA
+Causas Humanas y Organizacionales
+Fricciones de Proceso
+Personas y Capacidades
+Desarrollos en paralelo: Ausencia de sincronización y merge continuo.
+Externalización aislada: Código de terceros sin inspección estricta.
+Procesos volátiles: Modificaciones abruptas de alcance en ejecución.
+Brecha técnica: Desconocimiento de patrones SOLID y testing.
+Urgencia ficticia: Priorizar salidas prematuras sin Definition of Done.
+Cero documentación: Dependencia crítica del conocimiento de un solo autor.
+
+MEDICIÓN Y GOBERNANZA
+Métricas Objetivas de Deuda Técnica
+TDR e Índice SQALE: Technical Debt Ratio (remediación vs desarrollo, meta < 5%). Cuantifica la deuda en días/persona.
+Complejidad Cognitiva: Mide el esfuerzo mental para comprender un flujo y predecir errores, superando a la ciclomática.
+Churn de Código y Hotspots: Correlación entre alta frecuencia de cambios (Git churn) y alta complejidad para priorizar refactors.
+
+Principios de Gestión en Producción Real
+Deuda Deliberada
+Aceptable solo si es visible, trazada en backlog y con fecha de pago.
+Quality Gates de CI/CD
+SonarQube y linters bloquean merges si la cobertura baja del 80%.
+Regla del Boy Scout
+Deja cada módulo más limpio de lo que lo encontraste al editar.
+
+REMEDIACIÓN
+Pilares de Resolución
+Cultura de Orden
+Disciplina diaria en tipado y pruebas unitarias.
+Refactor Planificado
+20% de cada sprint reservado para sanear deuda.
+Diseño Resiliente
+Arquitectura hexagonal que aísla dependencias volátiles.
+
+Taller Práctico: El Monolito Tóxico
+Propósito del Ejercicio
+Simular el relevo forzado de un servicio sin tests, con variables ilegibles y dependencias obsoletas.
+Dinámica de Trabajo
+Equipos de 2 a 3 personas rotando sobre un repositorio Git compartido.
+
+ESPECIFICACIÓN DEL REPOSITORIO
+Estructura del Proyecto Starter en Git
+Paso 1: Clonar y Explorar
+Descargar el repositorio y verificar la ausencia de linters y tests.
+Paso 2: Bifurcación Descoordinada
+Equipo A y Equipo B abren ramas paralelas para editar el mismo archivo.
+Paso 3: Colisión en Pull Request
+Conflictos masivos de merge y fallos en producción simulada.
+
+Tres Rondas de Tensión Realista
+Ronda 1 • 20 min
+Presión de Entrega
+Agregar descuentos exprés sin tests ni tipado.
+Ronda 2 • 15 min
+Intercambio de Rama
+Trabajar sobre el commit ajeno sin explicaciones.
+Ronda 3 • 25 min
+Saneamiento ISO
+Introducir pruebas de caracterización y refactorizar.
+
+TRABAJO AUTÓNOMO EN CASA
+Taller 2: Auditoría Forense y Quality Gates
+Fase 1: Diagnóstico ISO 25010: Auditoría con ESLint y análisis de complejidad sobre una API Express. Cálculo de TDR y reporte ejecutivo.
+Fase 2: Arquitectura Hexagonal: Desacoplar la lógica de dominio de controladores y persistencia. Cobertura de pruebas unitarias puras > 80%.
+Fase 3: CI/CD Quality Gates: Pipeline en GitHub Actions que bloquea Pull Requests si la cobertura cae o hay vulnerabilidades críticas.
+
+El Software Envejece Cada Día
+Los estándares internacionales y el mantenimiento preventivo no son burocracia: son el único seguro contra el colapso operativo.
