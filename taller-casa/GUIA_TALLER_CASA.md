@@ -1,25 +1,22 @@
 # Taller Autónomo (Para Casa): «Auditoría Forense y Modernización con CI/CD Quality Gates»
-**Especialización en Ingeniería de Software**
 
 ---
 
-## 📋 Resumen del Proyecto
-* **Modalidad:** Equipos de 2 personas o individual.
-* **Tiempo estimado de dedicación:** 1 a 2 semanas.
+##  Resumen del Proyecto
 * **Entregable:** Repositorio en GitHub con el código refactorizado, suite de pruebas, pipeline de GitHub Actions activo y un Informe Técnico de Auditoría en Markdown (`INFORME_AUDITORIA.md`).
 
 ---
 
-## 🏢 Escenario Empresarial Ficticio
+##  Escenario Empresarial Ficticio
 La fintech **«FastPay Global»** procesa suscripciones y cobros recurrentes a través de un microservicio en Node.js. En los últimos tres meses, el servicio ha sufrido caídas los fines de semana, quejas de clientes por cobros duplicados y una rotación de desarrolladores del 60%. La dirección de tecnología ha congelado nuevos despliegues hasta que se presente una auditoría formal y se refactorice el sistema bajo estándares **ISO/IEC 25010** e **ISO/IEC/IEEE 12207**.
 
 Tu equipo ha sido contratado como Consultores de Arquitectura de Software para sanear el servicio y blindar el pipeline de despliegue.
 
 ---
 
-## 🎯 Fases del Taller
+##  Fases del Taller
 
-### 🔍 Fase 1: Diagnóstico Forense y Medición Cuantitativa (30% de la nota)
+###  Fase 1: Diagnóstico Forense y Medición Cuantitativa (30% de la nota)
 1. **Análisis Estático de Código:**
    * Configurar **ESLint** con reglas estrictas (o el plugin `eslint-plugin-sonarjs`).
    * Ejecutar análisis de dependencias vulnerables con `npm audit`.
@@ -33,7 +30,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ---
 
-### 🏗️ Fase 2: Modernización y Refactorización Arquitectónica (40% de la nota)
+###  Fase 2: Modernización y Refactorización Arquitectónica (40% de la nota)
 1. **Adopción de Arquitectura Hexagonal (Puertos y Adaptadores):**
    * Reorganizar la estructura de carpetas:
      ```text
@@ -51,7 +48,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ---
 
-### 🛡️ Fase 3: Quality Gates Automatizados en GitHub Actions (30% de la nota)
+###  Fase 3: Quality Gates Automatizados en GitHub Actions (30% de la nota)
 1. Configurar un flujo de trabajo CI en `.github/workflows/quality-gate.yml`.
 2. El pipeline debe activarse en cada `push` y `pull_request` a la rama `main`:
    * **Paso 1:** Verificación de sintaxis y linter (`npm run lint`).
@@ -62,7 +59,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ---
 
-## 📑 Rúbrica de Evaluación (ISO/IEC 25010)
+##  Rúbrica de Evaluación (ISO/IEC 25010)
 
 | Criterio | Excelente (5.0) | Aceptable (3.5 - 4.0) | Insuficiente (< 3.0) |
 | :--- | :--- | :--- | :--- |
@@ -73,7 +70,7 @@ Tu equipo ha sido contratado como Consultores de Arquitectura de Software para s
 
 ---
 
-## 🚀 Entregables
-1. Enlace al repositorio GitHub público o con permisos para el docente.
+##  Entregables
+1. Enlace al repositorio GitHub público.
 2. Archivo `INFORME_AUDITORIA.md` en la raíz del repositorio.
 3. Demostración de al menos un Pull Request cerrado satisfactoriamente con todos los checks verdes de GitHub Actions.
