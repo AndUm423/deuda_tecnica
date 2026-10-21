@@ -17,7 +17,7 @@ Simular el relevo forzado de un servicio crítico en producción sin pruebas aut
 
 ---
 
-## ⏱ Dinámica del Taller: 3 Rondas de Tensión Realista
+## Dinámica del Taller: 3 Rondas de Tensión Realista
 
 ###  Ronda 1 • Presión de Entrega (20 minutos)
 **Premisa:** Es viernes por la tarde. El área comercial exige una nueva funcionalidad urgente antes de salir a producción. No hay tiempo presupuestado para pruebas.
