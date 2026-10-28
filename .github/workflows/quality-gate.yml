@@ -1,40 +1,40 @@
+
 name: Quality Gate CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   quality-gate:
     name: Inspección de Calidad y Tests
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: taller-casa/fastpay-service
+
     steps:
-      - name: Descargar Código
+      - name: Descargar código
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
+          cache-dependency-path: taller-casa/fastpay-service/package-lock.json
 
-      - name: Instalar Dependencias
+      - name: Instalar dependencias
         run: npm ci
 
-      - name: 1. Inspección Estática (Linter)
-        run: npm run lint --if-present
+      - name: Inspección estática
+        run: npm run lint
 
-      - name: 2. Auditoría de Seguridad de Dependencias
+      - name: Auditoría de seguridad
         run: npm audit --audit-level=high
 
-      - name: 3. Ejecución de Pruebas Unitarias
+      - name: Pruebas automatizadas
         run: npm test
-
-      - name: 4. Verificación de Quality Gate
-        run: |
-          echo "======================================"
-          echo "✅ Todos los Quality Gates superados!"
-          echo "======================================"

@@ -1,12 +1,12 @@
-/**
- * SIMULADOR DE TRÁFICO Y CONCURRENCIA - FASTPAY GLOBAL
- * Este script evidencia los efectos de la deuda técnica:
- * 1. Condición de carrera por persistencia no atómica (Cobro duplicado).
+﻿/**
+ * SIMULADOR DE TRÃFICO Y CONCURRENCIA - FASTPAY GLOBAL
+ * Este script evidencia los efectos de la deuda tÃ©cnica:
+ * 1. CondiciÃ³n de carrera por persistencia no atÃ³mica (Cobro duplicado).
  * 2. Bloqueo de concurrencia e inconsistencia de saldos.
- * 3. Errores de cálculo en coma flotante.
+ * 3. Errores de cÃ¡lculo en coma flotante.
  */
 
-const billingEngine = require('../src/legacy_billing_engine');
+const billingEngine = require('../legacy/legacy_billing_engine');
 const fs = require('fs');
 const path = require('path');
 
@@ -14,7 +14,7 @@ const BACKUP_FILE = path.join(__dirname, '../data/subscriptions_backup.json');
 
 async function runSimulation() {
   console.log('===============================================================');
-  console.log('⚡ INICIANDO SIMULACIÓN DE FACTURACIÓN CONCURRENTE (FASTPAY)');
+  console.log('âš¡ INICIANDO SIMULACIÃ“N DE FACTURACIÃ“N CONCURRENTE (FASTPAY)');
   console.log('===============================================================');
 
   // Respaldar estado original para poder restaurarlo
@@ -22,14 +22,14 @@ async function runSimulation() {
   fs.writeFileSync(BACKUP_FILE, JSON.stringify(originalData, null, 2));
 
   const targetSubId = "sub_101"; // Carlos Mendoza - ENTERPRISE ($299.99 USD)
-  console.log(`\n🎯 Objetivo: Procesar cobro para la suscripción [${targetSubId}]`);
-  console.log(`👤 Cliente: ${originalData.find(s => s.id === targetSubId).customerEmail}`);
-  console.log(`💰 Saldo inicial: $${originalData.find(s => s.id === targetSubId).balance.toFixed(2)} USD`);
+  console.log(`\nðŸŽ¯ Objetivo: Procesar cobro para la suscripciÃ³n [${targetSubId}]`);
+  console.log(`ðŸ‘¤ Cliente: ${originalData.find(s => s.id === targetSubId).customerEmail}`);
+  console.log(`ðŸ’° Saldo inicial: $${originalData.find(s => s.id === targetSubId).balance.toFixed(2)} USD`);
 
-  console.log('\n🚀 Disparando 5 solicitudes de cobro casi simultáneas...');
+  console.log('\nðŸš€ Disparando 5 solicitudes de cobro casi simultÃ¡neas...');
   console.log('   (Simulando reintentos del webhook de Stripe + clic impaciente del usuario)\n');
 
-  // Disparar llamadas asíncronas concurrentes sobre la misma función síncrona/bloqueante
+  // Disparar llamadas asÃ­ncronas concurrentes sobre la misma funciÃ³n sÃ­ncrona/bloqueante
   const promises = [];
   for (let i = 1; i <= 5; i++) {
     promises.push(
@@ -50,15 +50,15 @@ async function runSimulation() {
 
   const results = await Promise.all(promises);
 
-  console.log('📊 RESULTADOS DE LAS 5 PETICIONES:');
+  console.log('ðŸ“Š RESULTADOS DE LAS 5 PETICIONES:');
   console.log('---------------------------------------------------------------');
   let successfulCharges = 0;
   results.forEach(res => {
     if (res.result.success) {
       successfulCharges++;
-      console.log(`✅ [Intento #${res.attempt}] COBRO EXITOSO: $${res.result.breakdown.finalTotal.toFixed(4)} USD | Ref: ${res.result.transactionReference} (${res.duration}ms)`);
+      console.log(`âœ… [Intento #${res.attempt}] COBRO EXITOSO: $${res.result.breakdown.finalTotal.toFixed(4)} USD | Ref: ${res.result.transactionReference} (${res.duration}ms)`);
     } else {
-      console.log(`❌ [Intento #${res.attempt}] RECHAZADO: ${res.result.code} - ${res.result.msg}`);
+      console.log(`âŒ [Intento #${res.attempt}] RECHAZADO: ${res.result.code} - ${res.result.msg}`);
     }
   });
 
@@ -67,16 +67,16 @@ async function runSimulation() {
   const targetUpdated = updatedData.find(s => s.id === targetSubId);
 
   console.log('\n===============================================================');
-  console.log('🔍 EVIDENCIA FORENSE DE DEUDA TÉCNICA:');
+  console.log('ðŸ” EVIDENCIA FORENSE DE DEUDA TÃ‰CNICA:');
   console.log('===============================================================');
-  console.log(`📌 Cobros procesados exitosamente: ${successfulCharges} de 5.`);
-  console.log(`💳 Saldo registrado en base de datos: $${targetUpdated.balance} USD`);
-  console.log(`⚠️  Fecha última facturación: ${targetUpdated.lastBilledAt}`);
+  console.log(`ðŸ“Œ Cobros procesados exitosamente: ${successfulCharges} de 5.`);
+  console.log(`ðŸ’³ Saldo registrado en base de datos: $${targetUpdated.balance} USD`);
+  console.log(`âš ï¸  Fecha Ãºltima facturaciÃ³n: ${targetUpdated.lastBilledAt}`);
 
   if (successfulCharges > 1) {
-    console.log(`\n🚨 ALERTA CRÍTICA: ¡INCIDENCIA DE COBRO DUPLICADO/MÚLTIPLE DETECTADA!`);
+    console.log(`\nðŸš¨ ALERTA CRÃTICA: Â¡INCIDENCIA DE COBRO DUPLICADO/MÃšLTIPLE DETECTADA!`);
     console.log(`   Se realizaron ${successfulCharges} cobros al cliente por falta de idempotencia y control de transacciones.`);
-    console.log(`   Costo para la empresa: Soporte al cliente, devolución bancaria ($15 fee) y reputación.`);
+    console.log(`   Costo para la empresa: Soporte al cliente, devoluciÃ³n bancaria ($15 fee) y reputaciÃ³n.`);
   }
 
   // Restaurar datos originales
@@ -89,3 +89,4 @@ async function runSimulation() {
 }
 
 runSimulation();
+

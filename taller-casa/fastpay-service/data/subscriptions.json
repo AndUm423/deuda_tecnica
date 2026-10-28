@@ -25,10 +25,10 @@
     "status": "ACTIVE",
     "paymentMethod": "CREDIT_CARD",
     "cardLast4": "1111",
-    "balance": 114.84,
-    "lastBilledAt": "2026-10-24T11:22:08.249Z",
+    "balance": 344.52,
+    "lastBilledAt": "2026-10-28T18:09:11.550Z",
     "retryCount": 0,
-    "lastTransactionRef": "TX_1792840928249_1"
+    "lastTransactionRef": "TX_1793210951550_1"
   },
   {
     "id": "sub_103",
